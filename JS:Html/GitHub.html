@@ -1,0 +1,24 @@
+<h3>Hunting Github</h3>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+</head> 
+
+<html>
+    <body>
+            <div id="target" style="width: 40px; height:20px; background-color: blue"></div>
+   
+            <div id="addinfo"></div>           
+    </body>
+</html>
+<script>
+            $("#target").click(function(){
+                $.get("https://api.github.com/users/crestwood", displayName) //displayName is a function
+                    function displayName(data) {
+                        $("#addinfo").append("<p>"+data.login+"</p>")
+                    console.log(data);
+                    }
+            })
+    </script>
+<script src="Huntinggithub.js"></script>
+
