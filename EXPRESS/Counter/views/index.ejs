@@ -1,0 +1,22 @@
+
+<html>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<body>
+    <div class="container">
+    <h2>Counter</h2>
+   
+        <h3>Counter: <%= counter %></h3>
+ 
+        <form action='/add2' method='post'>
+            <input type='submit' value='add 2'>
+        </form>
+        <form action='/clear' method='post'>
+            <input type='submit' value='clear'>
+        </form>
+    </div>
+
+
+    
+</body>
+</html>
