@@ -6,7 +6,7 @@ module.exports = app =>{
     })
     app.post("/result", (req, res)=> {
        
-      
+        ninja = req.body
         
         req.session.location = req.body.dojoLocation;
         req.session.name = req.body.fullname;

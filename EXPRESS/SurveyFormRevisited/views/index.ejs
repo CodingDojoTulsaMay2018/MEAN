@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Survey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+</head>
+<body>
+    <div class="container">
+        <div class="display">
+                DISPLAY AREA
+              
+        </div>
+
+<form id="form" method='post'>
+    
+        Name: <input type="text" id="fullname"><br><br>
+        Dojo Location:
+        <select  id ='location'>
+             <option value='San Jose'>San Jose</option>
+             <option value='Tulsa'>Tulsa</option>
+             <option value='Seattle'>Seattle</option>
+        </select>
+        <br>
+        <br>
+
+
+        Favorite Language:
+        <select  id='language'>
+             <option value='Python'>Python</option>
+             <option value='Javascript'>Javascript</option>
+             <option value='C#'>C#</option>
+             <option value='Java'>Java</option>
+        </select>
+        <br>
+        <br>
+
+        Commnent(optional): <textarea  id= 'comment'></textarea>
+        <br>
+
+        <input type='submit' value='Submit'>
+    </form>
+  
+</div>
+</body>
+<style>
+    form{
+    position: relative;
+    left: 35%;
+    margin-top: 50px;
+}
+</style>
+<script>
+    $(document).ready(function (){
+    
+    var socket = io(); //1
+
+    $('#form').submit(function(event){
+        event.preventDefault();
+        var fullname = $('#fullname').val()
+        var location = $('#location').val()
+        var language = $('#language').val()
+        var comment = $('#comment').val()
+
+        var form = {
+            name:fullname,
+            location:location,
+            language: language,
+            comment: comment
+        }
+        socket.emit('survey',{form:form})
+    })
+    socket.on('info', function (data) { //4
+                $(".display").html(`<p>You emitted the following information to the server: Name: ${data.info.name},
+                                    Location: ${data.info.location},
+                                    Language: ${data.info.language},
+                                    Comments: ${data.info.comment},
+                                    Random Number: ${data.info.number}</p>`)
+                 //5
+         //6
+            });
+
+
+ })
+
+</script>
+</html>

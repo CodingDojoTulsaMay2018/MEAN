@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Survey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+</head>
+<body>
+    <div class="container">
+        <div class="display">
+               
+              
+        </div>
+
+    <form id="buttonPushed" >
+    <h5>Push the button to update the count!</h5>
+
+        <input type='submit' class="btn btn-primary btn-lg" value='Push the epic button'>
+    </form>
+
+
+    <form id="clearCounter" >
+            <h5>Push the button to clear the count!</h5>
+        
+                <input type='submit' class="btn btn-danger btn-lg" value='Clear The Counter"'>
+    </form>
+  
+</div>
+</body>
+<style>
+    form{
+    position: relative;
+    left: 35%;
+    margin-top: 50px;
+}
+</style>
+<script>
+    $(document).ready(function (){
+    
+    var socket = io(); //1
+
+    $('#buttonPushed').submit(function(event){
+        event.preventDefault();
+ 
+        socket.emit('buttonPushed')
+    })
+    $('#clearCounter').submit(function(event){
+        event.preventDefault();
+ 
+        socket.emit('clearCounter')
+    })
+
+    socket.on('info', function (data) { //4
+                $(".display").html(`<h1>The button has been pushed ${data.counter} times!!
+                                    </h1>`)
+                 //5
+        
+    });
+
+
+ })
+
+</script>
+</html>
