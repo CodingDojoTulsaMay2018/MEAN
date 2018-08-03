@@ -1,7 +1,6 @@
 const express = require("express");
 var bodyParser = require('body-parser');
 var session = require('express-session');
-
 const app = express();
 // const PORT = 8888;
 
@@ -29,10 +28,13 @@ require("./server/config/routes")(app);
 //     console.log(`Listening on port ${PORT}`);
 // })
 
-io.on('connection', function (socket) { //2
+io.on('connection', function (socket) { 
+  console.log("here i am***************");//2
     let counter = 0
     // socket.emit('greeting', { msg: 'Greetings, from server Node, brought to you by Sockets! -Server' }); //3
     socket.on('buttonPushed', function () { 
+      
+      
       counter += 1          
       socket.broadcast.emit('info',{counter:counter})
 
