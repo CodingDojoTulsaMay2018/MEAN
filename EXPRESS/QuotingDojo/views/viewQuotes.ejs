@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Survey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+</head>
+<body>
+        
+    <div class="container">
+        <div class="quotes">
+            <% if(users) { %>
+                <% for (var x of users) { %>
+                 <h5>"<%= x.quote %>"</h5>
+                 <h5 class="name">-<%= x.name %> at <%= x.createdAt.toLocaleTimeString('en-us', { hour: '2-digit', minute: '2-digit', month: 'long', day: '2-digit', year: 'numeric' }) %></h5>
+                 
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+           
+</body>
+
+<style>
+  
+    .quotes{
+        padding: 10px;
+        border-radius: 5px;
+        border: solid blue 1px;
+        margin-top: 50px;
+        width: 500px;
+        height: 500px;;
+    }
+    .name{
+        text-indent: 20px;
+    }
+
+</style>
+</html>

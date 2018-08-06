@@ -3,8 +3,20 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var path = require('path');
 
+
 var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/basic_mongoose');
+
+var UserSchema = new mongoose.Schema({
+  first_name: {type:String, required:true, minlength:6,},
+  last_name: {type:String, required:true, maxlength:20},
+  age: {type: Number, min:1, max:150},
+  email: {type: String, required:true}},
+  {timestamps:true})
+ mongoose.model('User', UserSchema);
+ var User = mongoose.model('User')
+ 
+
 
 const app = express();
 // const PORT = 8888;
@@ -24,6 +36,10 @@ app.use(session({
     saveUninitialized: true,
     cookie: { maxAge: 60000 }
   }))
+const flash = require('express-flash');
+app.use(flash());
+
+
 
   
 app.set("views", __dirname + "/views");
@@ -31,15 +47,11 @@ app.set("view engine", "ejs");
 
 require("./server/config/routes")(app);
 
-// app.listen(PORT, ()=>{
-//     console.log(`Listening on port ${PORT}`);
-// })
-mongoose.connect('mongodb://localhost/basic_mongoose');
-var UserSchema = new mongoose.Schema({
-  name: String,
-  age: Number
- })
- mongoose.model('User', UserSchema); // We are setting this Schema in our Models as 'User'
- var User = mongoose.model('User')
+
+
+
+
+
+ 
  
  

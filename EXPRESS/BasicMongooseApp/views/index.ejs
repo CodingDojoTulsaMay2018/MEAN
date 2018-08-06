@@ -9,14 +9,27 @@
 </head>
 <body>
 
-    <form action='/users' method='post'>
-    
-        Name: <input type="text" name="name"><br>
-        Age: <input type="text" name="age"><br>
-      
-        
 
-        <input type='submit' value='Submit'>
+    <form action='/add_users' method='post'>
+        <div> <% if(messages.registration) { %>               
+            <h6><%= messages.registration[0] %></h6>               
+            <% } %>
+
+           
+        </div>    
+        First Name: <input type="text" name="first_name"><br>
+        Last Name: <input type="text" name="last_name"><br>
+        Age: <input type="text" name="age"><br>
+        Email: <input type="text" name="email"><br>
+      
+        <input type='submit' value='Add User'>
+    </form>
+    <form action='/find' method='post'>
+        <input type='submit' value='Find All'>
+    </form><br>
+    <form action='/findUser' method='post'>
+        First Name: <input type="text" name="first_name"><br>
+        <input type='submit' value='Find User'>
     </form>
 
 </body>
