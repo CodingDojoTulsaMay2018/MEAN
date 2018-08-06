@@ -1,0 +1,68 @@
+
+.header{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 20px;
+    font-family: Arial, Helvetica, sans-serif
+}
+.contentParent{
+    display: flex;
+    justify-content: center;
+}
+
+.question{
+   
+    width: 250px;
+    height:400px; 
+    background-color: dodgerblue;
+    border: double black 5pt;
+    border-radius: 10px;
+    margin: 15px;
+    margin-left:20px;
+    text-align: center;
+    padding:10px;
+}
+/* .chatParent{
+    justify-content: left;
+} */
+.chat{
+   
+    width: 300px;
+    height:500px; 
+    background-color:rgb(26, 114, 201);
+    border: double black 5pt;
+    border-radius: 10px;
+    margin: 15px;
+    margin-left:20px;
+    text-align: center;
+    padding:10px;
+}
+/* .statusParent{
+    justify-content: left;
+} */
+.status{
+   
+    width: 300px;
+    height:500px; 
+    background-color: rgb(26, 114, 201);
+    border: double black 5pt;
+    border-radius: 10px;
+    margin: 15px;
+    margin-left:20px;
+    text-align: center;
+    padding:10px;
+}
+.questionText{
+    font-size: 18pt;
+    font-weight: bold;
+}
+.answerText{
+    font-size: 15pt;
+    
+}
+
+#counter{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:20px;
+}
