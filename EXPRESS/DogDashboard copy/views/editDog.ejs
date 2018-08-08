@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Survey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+</head>
+<body>
+        <a href="/">Home</a>
+        <div class='errors'>
+            <% if(messages.registration) { %>
+                <% for (var x of messages.registration) { %>
+                <h6><%= x %></h6>
+                <% } %>
+            <% } %>
+        </div><br>
+
+
+            <div class='container' style="border:none;">
+                    <h5>Current Dog Info</h5>
+                    Name: <%= dog.name %><br>
+                    Breed: <%= dog.breed %><br>
+                    Color: <%= dog.color %><br> 
+                    Age: <%= dog.age %><br>           
+            </div><br>
+            
+                
+            
+            
+           
+            
+
+           
+                <div class='container' style="border:none;">
+                        <h3>Edit Dog Info</h3>   
+                    <form class='form-control' action="/editDog/<%= dog.id %>" method="POST">
+                        
+                        <div class="form-group">                                    
+                            <b>Dog Name:</b><br><input type="text" name="name" input><% if(errors) { %><%= errors.name %><% } %><br>
+                        </div>
+                        <div class="form-group">
+                            <b>Breed:</b><br><input type="text" name="breed" input><% if(errors) { %><%= errors.breed %><% } %><br>
+                        </div>
+                        <div class="form-group">
+                            <b>Color:</b><br><input type="text" name="color" input><% if(errors) { %><%= errors.color %><% } %><br>
+                        </div>
+                        <div class="form-group">
+                                <b>Age:</b><br><input type="text" name="age" input><% if(errors) { %><%= errors.age %><% } %><br>
+                        </div>
+                        
+                                <input type="hidden" name="id" value=<%= dog.id %> input><br>
+                      
+
+
+                        <button type="submit" class="btn btn-success">Edit doggo!</button>
+                    </form>
+       
+                    
+                  
+                </div>
+              
+                
+        
+   
+</body>
+
+
+</html>
+<style>
+    form{
+        
+        margin-right: 40%;
+        margin-top:10vh;
+    }
+</style>

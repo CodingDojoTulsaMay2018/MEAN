@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Survey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+</head>
+<body>
+        
+        <a href="/newDog">Add a Dog</a>
+           
+                <div class='container' style="border:none;">
+                    <div class="viewDogs">
+                        <h5>View Dogs</h5>
+                        <% if(dogs) { %>
+                            <% for (var x of dogs) { %>                          
+                                <a href="/viewDog/<%= x._id %>"><%= x.name %></a><br><br>                    
+                            <% } %>
+                        <% } %>  
+                    </div>           
+                </div>
+
+                <div class='container' style="border:none;">
+                    <div class="viewDogs">
+                        <h5>Delete Dogs</h5>
+                        <% if(dogs) { %>
+                            <% for (var x of dogs) { %>                          
+                                <a href="/deleteDog/<%= x._id %>"><%= x.name %></a><br><br>                    
+                            <% } %>
+                        <% } %>  
+                    </div>           
+                </div>
+                <div class='container' style="border:none;">
+                        <div class="viewDogs">
+                            <h5>Edit Dogs</h5>
+                            <% if(dogs) { %>
+                                <% for (var x of dogs) { %>                          
+                                    <a href="/editDog/<%= x._id %>"><%= x.name %></a><br><br>                    
+                                <% } %>
+                            <% } %>  
+                        </div>           
+                </div>
+
+                
+                
+        
+   
+</body>
+
+
+</html>
+<style>
+.container{
+    margin-top: 60px;
+}
+.viewDogs{
+    border: lightgray solid 1px;
+    padding: 15px;
+    width: 200px;
+}
+</style>
