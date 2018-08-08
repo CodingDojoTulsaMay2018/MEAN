@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Dog = mongoose.model("Dog");
+let errors = {}
 
 
 
@@ -44,8 +45,12 @@ module.exports = {
                
             } else {
                 console.log(dogsFromDB);
+
                 
-                res.render("editDog", {dog: dogsFromDB});
+                
+                
+                res.render("editDog", {dog: dogsFromDB,errors:errors});
+                errors={}
             }
         })
         console.log("1");
@@ -70,8 +75,9 @@ module.exports = {
     },
     
     newDog: (req, res) => {
-        console.log("MADE IT");
-        res.render("newDog");
+       
+        res.render("newDog",{errors:errors});
+        errors={}
         
 
     },
@@ -79,35 +85,43 @@ module.exports = {
     
     addDog: (req, res) => {
         const dog = new Dog();       
-        console.log(req.body);
+        
         dog.name = req.body.name
         dog.breed = req.body.breed  
         dog.color = req.body.color
         dog.age = req.body.age        
         dog.save((err)=>{
+            
             if(err){
-                console.log("We have an error");               
-                for(var key in err.errors){
-                    req.flash('registration',err.errors[key].message)
-                }               
-                console.log(err);
-                // res.redirect("newDog");  
+                
+                errors =    {name: err.errors.name.message,
+                            breed: err.errors.breed.message,
+                            color: err.errors.color.message,
+                            age: err.errors.age.message,}            
+               
+               
             }
             res.redirect("newDog");
         })
     },
     editDog: (req, res) => {
-     
-
         Dog.findByIdAndUpdate(req.params.id,{$set:{name:req.body.name,breed:req.body.breed,color:req.body.color,age:req.body.age}},{new:true},function(err,dog){
             if(err) {
-                for(var key in err.errors){
-                    req.flash('registration',err.errors[key].message)
-                }  
-
-                res.redirect("editDog");
+                console.log("failed validation");
+                // console.log(err);
+                
+                    errors =    
+                    {name: err.errors.name.message ,
+                    breed: err.errors.breed.message,
+                    color: err.errors.color.message,
+                    age: err.errors.age.message,}
+                                                 
+                
+                res.redirect("/editDog/"+req.params.id);
                
             } else {
+                console.log("edited dog*******"+dog);
+                
                 console.log("NO ERRORS**************************************");          
                 res.redirect("/");
                 

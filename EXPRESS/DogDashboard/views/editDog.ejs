@@ -25,24 +25,29 @@
                     Color: <%= dog.color %><br> 
                     Age: <%= dog.age %><br>           
             </div><br>
-
+            
+                
+            
+            
+           
+            
 
            
                 <div class='container' style="border:none;">
                         <h3>Edit Dog Info</h3>   
                     <form class='form-control' action="/editDog/<%= dog.id %>" method="POST">
                         
-                        <div class="form-group">
-                            <b>Dog Name:</b><br><input type="text" name="name" input><br>
+                        <div class="form-group">                                    
+                            <b>Dog Name:</b><br><input type="text" name="name" input><% if(errors) { %><%= errors.name %><% } %><br>
                         </div>
                         <div class="form-group">
-                            <b>Breed:</b><br><input type="text" name="breed" input><br>
+                            <b>Breed:</b><br><input type="text" name="breed" input><% if(errors) { %><%= errors.breed %><% } %><br>
                         </div>
                         <div class="form-group">
-                            <b>Color:</b><br><input type="text" name="color" input><br>
+                            <b>Color:</b><br><input type="text" name="color" input><% if(errors) { %><%= errors.color %><% } %><br>
                         </div>
                         <div class="form-group">
-                                <b>Age:</b><br><input type="text" name="age" input><br>
+                                <b>Age:</b><br><input type="text" name="age" input><% if(errors) { %><%= errors.age %><% } %><br>
                         </div>
                         
                                 <input type="hidden" name="id" value=<%= dog.id %> input><br>

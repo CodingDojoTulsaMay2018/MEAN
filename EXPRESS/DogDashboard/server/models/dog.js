@@ -7,6 +7,14 @@ const DogSchema = new mongoose.Schema({
     breed: {type: String, minlength:3,required: [true, "Breed field must be at least 2 characters"]}
    }, {timestamps: true})
 
+   DogSchema.pre('findOneAndUpdate', function(next) {
+    
+    this.options.runValidators = true;
+    next();
+    
+    
+  });
+
 mongoose.model('Dog', DogSchema);
 
 
