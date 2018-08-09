@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/Login.css">
+    
+       
+    
+    <title>Login Registration</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="nav"><ul class="nav">
+                                <li class="nav-item">
+                                        <a class="nav-link active" href="/logout">Logout</a>
+                                </li>
+                        </ul>
+        </div>
+            <div class="row">
+                <div class="col-sm">
+                        <h2>Dojo Secrets</h2>
+                        <hr>
+                        <form class="form" action='/addSecret' method='post'>
+                                <div class="form-group">
+                                        <label >Create A Secret: </label>
+                                        <input type="text" name="secret" class="form-control" id="secret">              
+                                </div>
+
+                                
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                </div>
+        </div>
+        <div class="row">
+                <h3>All the Secrets</h3>
+        </div>
+        <% if(users) { %>
+                <% for(var user of users) { %>
+                   
+                        <% if(user._secrets){ %>
+                                <% for (var secret of user._secrets) { %>
+                                        <div class="row">
+                                                        
+                                                <div class="secret"><%= secret.poster %> - <%= secret.content %>  <a href="/viewSecret<%= secret._id %>">View Secret</a>     </div>
+                                        </div>
+                                        
+                               <% } %>
+                       <% } %>
+                        
+
+               <% } %>
+        
+        <% } %>
+    </div>
+</body>
+</html>

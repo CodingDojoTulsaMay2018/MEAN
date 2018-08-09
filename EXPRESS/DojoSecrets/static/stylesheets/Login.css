@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(185, 202, 202);
+}
+.form{
+    margin-top: 20px;
+    width: 400px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+h4{
+    margin-top: 80px;
+   
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.secret{
+    margin-left:15%;
+    margin-top:15px;
+    width: 400px;
+    height: 50px;
+    background-color: rgb(175, 190, 190); 
+}
+h3{
+    margin-top:15px;
+    margin-left:15%;
+}
