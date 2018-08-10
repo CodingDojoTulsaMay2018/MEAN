@@ -8,27 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'Angular';
-  tasks = []
-  snacks: string[]
-  loggedIn: boolean;
+  allUsers = []
   constructor(private _httpService: HttpService){
     
   }
+
   ngOnInit(){
     this.getTasksFromService()
-    this.snacks = ["vanilla latte with skim milk", "brushed suede", "cookie"];
-    this.loggedIn = true;
     
-
   }
+
 
   getTasksFromService(){
-    let observable = this._httpService.getPokemon(1)
+    let observable =  this._httpService.getAll()
     observable.subscribe(data=>{
-      console.log("Got our data!", data)
-      this.tasks = data ['tasks']
+      console.log("Got the data", data)
+      this.allUsers = data['data'] 
+      
+     
+      
     })
   }
-  
 
 }

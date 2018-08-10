@@ -19,18 +19,14 @@ export class HttpService {
   //  }
 
     getPokemon(id){
-    let pokemon
-
-    let tempObservable = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
-    
-    tempObservable.subscribe(data =>   pokemon = data )
-         
-    tempObservable.subscribe(pokemon)
+      console.log("getPokemon has run");
       
- 
-    
-    
+    // let pokemon
+    // let tempObservable = this._http.get('https://pokeapi.co/api/v2/pokemon/'+id+'/');
+    return this._http.get('https://pokeapi.co/api/v2/pokemon/'+id+'/')
+    // tempObservable.subscribe(data => {pokemon = data, 
+    //                                   console.log(pokemon),
+    //                                   console.log(data.abilities[1].ability.name)},)  
+      
     }
- 
-
 }
