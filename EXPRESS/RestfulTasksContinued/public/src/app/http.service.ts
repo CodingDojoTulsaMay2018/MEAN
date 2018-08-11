@@ -6,45 +6,31 @@ import {HttpClient} from'@angular/common/http';
 
 export class HttpService {
   constructor(private _http: HttpClient) {
-    // this.getTasks();
-    // this.getAll();  
-    // this.getUser('5b6cd736db4e1196f3bd554a');
-    // this.create("billybob")   
-    // this.update('5b6cd72adb4e1196f3bd5549','lisa')
-    // this.delete("5b6cde426a5e0c9a45f505b3") 
+
     
    }
 
-  //   getTasks(){
-  //    let tempObservable = this._http.get('/tasks');
-  //    tempObservable.subscribe(data => console.log("Got our tasks!", data))
-  //  }
   getAll(){
     return this._http.get('/users');
-    // tempObservable.subscribe(data => console.log("Got all our users!", data))
    }
-  //  getAll(){
-  //   let tempObservable = this._http.get('/users');
-  //   tempObservable.subscribe(data => console.log("Got all our users!", data))
-  //  }
-
    getUser(id){
-    let tempObservable = this._http.get('/users/'+id);
-    tempObservable.subscribe(data => console.log("Got one user!", data))
+    return this._http.get('/users/'+id);   
    }
-
    create(name){
-    let tempObservable = this._http.post('/users',{name:name});
-    tempObservable.subscribe(data => console.log("Added a user!", data))
+    return this._http.post('/users',{name:name});
+    
    }
    update(id,name){
-    let tempObservable = this._http.put('/users/'+id,{name:name});
-    tempObservable.subscribe(data => console.log("Updated a user!", data))
+    return this._http.put('/users/'+id,{name:name});
+    
    }
    delete(id){
-    let tempObservable = this._http.delete('/users/'+id);
-    tempObservable.subscribe(data => console.log("Deleted a user!", data))
+    return this._http.delete('/users/'+id);
+    
    }
+   postToServer(num){
+    return this._http.post('/tasks', num);  
+}
 
 
   
