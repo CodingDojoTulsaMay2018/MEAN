@@ -1,0 +1,33 @@
+.container{
+    padding: 30px;
+}
+.form{
+    margin-left: 10%;
+    width: 300px;
+}
+h4{
+    margin: 20px;
+}
+
+#nameButtons{
+    width: 150px;
+    height: 30px;
+    margin:2px;
+    margin-left: 10%;
+}
+span{
+    color: red;
+}
+#userInfo{
+    margin-top: 20px;
+    width: 800px;
+    margin-left: 20%;
+}
+
+#cakeForm{
+    margin-top: 20px;
+}
+
+.cakeList{
+    margin-top:40px;
+}

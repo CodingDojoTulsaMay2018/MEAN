@@ -1,0 +1,72 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Books API</title>
+</head>
+<body>
+
+    <div class="continer">
+        <div>
+            <h2 class="title" >{{ title }}</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm" id="addCake"> 
+                <form class="form" (submit)="createCake()">
+                    <h4>Add Cake</h4>
+                        <div class="form-group">
+                                <label >Baker Name: </label><span *ngIf="two">{{errors.name}}</span> 
+                                <input type="text"[(ngModel)]="newCake.name" name="newCake.name" class="form-control" id="name"#name="ngModel"   >           
+                        </div>
+                        <div class="form-group">
+                            <label >Image URL: </label><span *ngIf="two">{{errors.image}}</span> 
+                            <input type="text"[(ngModel)]="newCake.image" name="newCake.image" class="form-control" id="image"#name="ngModel">              
+                        </div>                    
+                        <input type="submit" class="btn btn-primary"value="Create Cake"/>
+                </form>
+            </div>
+            <div class="col-sm">
+                    <div class="cakeList">  
+                            {{ratedCake| json}}        
+                        <div *ngFor="let cake of cakes">
+                            <form class="form" id="cakeForm" (submit)="rateCake(cake._id)">
+                                
+                                <input type="hidden" [(ngModel)]="cake['_id']" name="cake._id"  >
+                                
+                                    <select [(ngModel)]="ratedCake.stars" name="ratedCake.stars" >
+                                            <option value="1">1 Star</option>
+                                            <option value="2">2 Stars</option>
+                                            <option value="3">3 Stars</option>
+                                            <option value="4">4 Stars</option>
+                                            <option value="5">5 Stars</option>
+                                    </select>
+                                    <input type="text" [(ngModel)]="ratedCake.comment" name="comment" class="form-control">
+                                    
+                                    
+                                    
+                                    <button  class="btn btn-primary btn-sm" >Rate</button>
+                            </form>
+                            <img   src="{{cake['image']}}" width="100" height="100">
+                        </div>                      
+                    </div>
+            </div>
+           
+        </div>
+       
+      
+
+
+     
+        
+    </div>
+</body>
+</html>
+
+
+
+
+

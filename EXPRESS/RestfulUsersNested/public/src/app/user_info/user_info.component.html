@@ -1,16 +1,17 @@
 
     <div class="userEdit">
-        <h6>{{userToShow.name}}</h6>
-        <form class="form" (submit)="updateUser()">
+       {{userToShow.name}}
+       {{userToShow._id}}
+        <form class="form" (submit)="callParent()">
                 <h4>Edit User</h4>
-                    <input type="hidden"[(ngModel)]="editUser._id" name="editUser._id" class="form-control" id="_id"#name="ngModel">
+                    <input type="hidden"[(ngModel)]="userToShow._id" name="userToShow._id" class="form-control" id="_id"#name="ngModel">
                     <div class="form-group">
                             <label >Name: </label>
-                            <input type="text"[(ngModel)]="editUser.name" name="editUser.name" class="form-control" id="name"#name="ngModel">              
+                            <input type="text"[(ngModel)]="userToShow.name" name="userToShow.name" class="form-control" id="name"#name="ngModel">              
                     </div>
                     <div class="form-group">
                         <label >Age: </label>
-                        <input type="number"[(ngModel)]="editUser.age" name="editUser.age" class="form-control" id="age"#name="ngModel">              
+                        <input type="number"[(ngModel)]="userToShow.age" name="userToShow.age" class="form-control" id="age"#name="ngModel">              
                     </div>                    
                     <input type="submit" class="btn btn-primary" value="Edit User"/>
         </form>

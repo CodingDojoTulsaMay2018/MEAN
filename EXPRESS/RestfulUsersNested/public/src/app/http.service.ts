@@ -24,7 +24,7 @@ export class HttpService {
   }
 
   selectUser(_id){
-    console.log(_id);
+    console.log("http service.ts:  "+_id);
     
     return this._http.get('/users/'+_id)
   }

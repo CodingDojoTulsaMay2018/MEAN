@@ -31,9 +31,7 @@
             </div>
            
         </div>
-        <div *ngIf="user_info" class="col-sm">
-                <app-user_info [userToShow]="selectUser" ></app-user_info>
-        </div>
+       
       
         <div class="row" id="userInfo" >
                 <div class="col-sm">
@@ -45,6 +43,9 @@
                         </div>                      
                     </div>
                 </div>
+        </div>
+        <div *ngIf="user_info" class="col-sm">
+                <app-user_info [userToShow]="this.editUser" (myEvent)="updateUser($event)"></app-user_info>
         </div>
 
      

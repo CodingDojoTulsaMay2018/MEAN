@@ -17,6 +17,7 @@ export class AppComponent implements OnInit{
   //displays error message
   errors = {name:"", age:""}
  
+ 
   constructor(private _httpService: HttpService){
   }
   ngOnInit(){
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit{
   }
   createUser(){
     this.two = false;
-    console.log("CreatingUser" + this.newUser);
+    
     let observable = this._httpService.createUser(this.newUser)
     observable.subscribe(data=>{
     this.newUser = {name:"",age:Number}
@@ -41,10 +42,11 @@ export class AppComponent implements OnInit{
   }
 
 
-  updateUser(){
+  updateUser(event){
+    console.log("Called the parent update user" + event);
+    
     
     let _id = this.editUser._id
-    
     console.log("CreatingUser" + this.editUser);
     let observable = this._httpService.updateUser(_id,this.editUser)
     observable.subscribe(data=>{
@@ -63,8 +65,7 @@ export class AppComponent implements OnInit{
     })
   }
   selectUser(_id){
-    console.log("Clicked!!!!!!!!" + _id);
-    
+    console.log("Clicked!!!!!!!!" + _id);  
     let observable = this._httpService.selectUser(_id) 
     observable.subscribe(data =>{
     this.user = data;
@@ -72,7 +73,8 @@ export class AppComponent implements OnInit{
     this.two = false;
     this.user_info = true;
     this.editUser = {name:data['name'],age:data['age'],_id:data['_id']}
-    console.log(data);    
+  
+    
     })
   }
   deleteUser(_id){
