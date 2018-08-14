@@ -1,0 +1,55 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Books API</title>
+</head>
+<body>
+
+    <div class="continer">
+        <div>
+            <h2 class="title" >{{ title }}</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm"> 
+                <form class="form" (submit)="createUser()">
+                    <h4>Add User</h4>
+                        <div class="form-group">
+                                <label >Name: </label><span *ngIf="two">{{errors.name}}</span> 
+                                <input type="text"[(ngModel)]="newUser.name" name="newUser.name" class="form-control" id="name"#name="ngModel"   >           
+                        </div>
+                        <div class="form-group">
+                            <label >Age: </label><span *ngIf="two">{{errors.age}}</span> 
+                            <input type="number"[(ngModel)]="newUser.age" name="newUser.age" class="form-control" id="age"#name="ngModel">              
+                        </div>                    
+                        <input type="submit" class="btn btn-primary"value="Create User"/>
+                </form>
+            </div>
+            <div class="col-sm">
+                    <app-user_info *ngIf="selectUser"></app-user_info>
+            </div>
+        </div>
+        <div class="row" id="userInfo" >
+                <div class="col-sm">
+                    <div class="userList">
+                        <h4>User List</h4>
+                        <div *ngFor="let user of users">
+                            <button  class="btn btn-primary btn-sm"  id="nameButtons"  (click)="selectUser(user['_id'])">{{user['name']}} - Age:{{user['age']}}</button>
+                            <button  class="btn btn-danger btn-sm"  id="nameButtons"  (click)="deleteUser(user['_id'])">{{user['name']}} - Delete</button>
+                        </div>                      
+                    </div>
+                </div>
+        </div>
+        
+    </div>
+</body>
+</html>
+
+
+
+
+

@@ -28,7 +28,7 @@ export class AppComponent implements OnInit{
   }
 
   showAll(): void { 
-    console.log("clicked")
+    console.log("appcomponent.ts")
     let observable = this._httpService.getAnimals()
     observable.subscribe(data => {
     this.animals = data;

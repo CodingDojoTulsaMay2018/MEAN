@@ -3,7 +3,9 @@ const Animal = mongoose.model("Animal");
 
 module.exports = {
     index: (req, res)=>{
+        
         Animal.find({})
+       
         .then(animal => res.json(animal))
         .catch(err => res.send(err))
     },

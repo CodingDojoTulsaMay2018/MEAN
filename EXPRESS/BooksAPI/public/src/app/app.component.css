@@ -1,0 +1,23 @@
+body {
+    height: 1000px;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    /* background-color: rgb(219, 213, 188); */
+    background: radial-gradient(rgb(83, 87, 87) 15%, rgb(33, 36, 33) 85%);
+}
+
+.title{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 70px;
+    padding-top: 30px;
+    color: #F0F0EF;
+    text-align: center;
+}
+
+h4{
+    color: rgb(129, 219, 233);
+}
+label{
+    color:  #C9B33E;
+}

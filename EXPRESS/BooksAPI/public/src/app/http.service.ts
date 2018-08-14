@@ -7,18 +7,17 @@ export class HttpService {
   constructor(private _http: HttpClient) { 
     // this.getTasks();
   }
-  getAnimals(){
-    console.log("http.service.ts");
-    return this._http.get('/animals')
+  getAllAuthors(){
+    return this._http.get('/authors')
   }
 
-  select(num){
-    return this._http.get('/animals/'+num)
+  getAuthor(id){
+    return this._http.get('/authors/'+id)
   }
 
-  create(newAnimal){
+  createAuthor(newAuthor){
+    console.log("hit here");
     
-    
-    return this._http.post('/animals', newAnimal)
+    return this._http.post('/authors', newAuthor)
   }
 }
